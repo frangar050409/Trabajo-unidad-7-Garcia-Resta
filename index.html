@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Abastecimiento de por Vida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="lluvia" aria-hidden="true"></div>
+
+  <header class="portada">
+    <p class="sello">Unidad 7 · JavaScript</p>
+    <h1>Calculadora de<br><span>Abastecimiento</span><br>de por Vida</h1>
+    <p class="bajada">Variables, operaciones y alerts para planear tus snacks y tus vacaciones.</p>
+  </header>
+
+  <main>
+    <section class="panel" id="snacks">
+      <div class="panel__cabecera">
+        <span class="numero">01</span>
+        <h2>🍟 El cálculo de los snacks</h2>
+      </div>
+
+      <form class="campos" id="formSnacks">
+        <label>Edad actual<input type="number" id="edadActual" value="20" min="0" max="120"></label>
+        <label>Edad máxima estimada<input type="number" id="edadMaxima" value="85" min="1" max="130"></label>
+        <label>Snack favorito<input type="text" id="snackFavorito" value="papas fritas"></label>
+        <label>Snacks por día<input type="number" id="snacksPorDia" value="2" min="0" step="0.5"></label>
+        <label>Precio por unidad ($)<input type="number" id="precioPorUnidad" value="1500" min="0"></label>
+      </form>
+
+      <div class="resultado">
+        <p class="resultado__grande"><span id="cantidadFinal">0</span><small id="nombreSnack">papas fritas</small></p>
+        <p id="fraseSnacks" class="frase"></p>
+        <div class="barra"><div class="barra__relleno" id="barraVida"></div></div>
+        <p class="barra__texto" id="textoBarra"></p>
+        <p class="gasto">Gasto total: <strong id="gastoTotal">$0</strong></p>
+      </div>
+
+      <button class="boton" type="button" id="alertSnacks">Ver los alerts de la consigna</button>
+    </section>
+
+    <section class="panel panel--ticket" id="viaje">
+      <div class="panel__cabecera">
+        <span class="numero">02</span>
+        <h2>✈️ Presupuesto de viaje</h2>
+      </div>
+
+      <form class="campos" id="formViaje">
+        <label>Días de viaje<input type="number" id="diasDeViaje" value="10" min="1"></label>
+        <label>Presupuesto máximo ($)<input type="number" id="presupuestoMaximo" value="600000" min="0"></label>
+        <label>Comidas totales<input type="number" id="comidasTotales" value="30" min="1"></label>
+      </form>
+
+      <div class="ticket" id="ticket">
+        <p class="ticket__titulo">BOARDING PASS · COMIDAS</p>
+        <div class="ticket__fila"><span>Días</span><span id="tDias">10</span></div>
+        <div class="ticket__fila"><span>Presupuesto</span><span id="tPresupuesto">$600.000</span></div>
+        <div class="ticket__fila"><span>Comidas</span><span id="tComidas">30</span></div>
+        <div class="ticket__total"><span>Por comida</span><span id="tPorComida">$20.000</span></div>
+        <p id="fraseViaje" class="frase"></p>
+        <div class="ticket__codigo" aria-hidden="true"></div>
+      </div>
+
+      <button class="boton" type="button" id="alertViaje">Ver el alert de la consigna</button>
+    </section>
+  </main>
+
+  <footer>Francisco García R. · Plataforma 5</footer>
+
+  <script src="consigna.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
