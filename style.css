@@ -312,6 +312,122 @@ input:focus {
   background: repeating-linear-gradient(90deg, var(--tinta) 0 2px, transparent 2px 5px, var(--tinta) 5px 9px, transparent 9px 11px);
 }
 
+.alerta {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(4px);
+  animation: oscurecer 0.25s ease-out;
+}
+
+.alerta[hidden] {
+  display: none;
+}
+
+.alerta.cerrando {
+  animation: aclarar 0.3s ease-in forwards;
+}
+
+@keyframes oscurecer {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes aclarar {
+  to {
+    opacity: 0;
+  }
+}
+
+.alerta__caja {
+  position: relative;
+  width: min(440px, 100%);
+  padding: 56px 28px 28px;
+  text-align: center;
+  background: var(--crema);
+  border: 3px solid var(--tinta);
+  border-radius: 24px;
+  box-shadow: 10px 10px 0 var(--rojo);
+}
+
+.alerta__caja.entrar {
+  animation: saltar 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes saltar {
+  from {
+    transform: scale(0.4) rotate(-8deg);
+    opacity: 0;
+  }
+}
+
+.alerta__icono {
+  position: absolute;
+  top: -44px;
+  left: 50%;
+  translate: -50% 0;
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  font-size: 2.8rem;
+  background: var(--amarillo);
+  border: 3px solid var(--tinta);
+  border-radius: 50%;
+  animation: rebotar 1.4s ease-in-out infinite;
+}
+
+@keyframes rebotar {
+  50% {
+    transform: translateY(-8px) rotate(8deg);
+  }
+}
+
+.alerta__contador {
+  margin: 0 0 6px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--rojo);
+  min-height: 1em;
+}
+
+.alerta__texto {
+  margin: 0 0 24px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  min-height: 3.6em;
+}
+
+.alerta__boton {
+  font: inherit;
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 12px 28px;
+  color: var(--tinta);
+  background: var(--amarillo);
+  border: 3px solid var(--tinta);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--tinta);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.alerta__boton:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--tinta);
+}
+
+.alerta__boton:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--tinta);
+}
+
 footer {
   text-align: center;
   padding: 24px;

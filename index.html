@@ -41,7 +41,7 @@
         <p class="gasto">Gasto total: <strong id="gastoTotal">$0</strong></p>
       </div>
 
-      <button class="boton" type="button" id="alertSnacks">Ver los alerts de la consigna</button>
+      <button class="boton" type="button" id="alertSnacks">Ver los alerts</button>
     </section>
 
     <section class="panel panel--ticket" id="viaje">
@@ -66,9 +66,18 @@
         <div class="ticket__codigo" aria-hidden="true"></div>
       </div>
 
-      <button class="boton" type="button" id="alertViaje">Ver el alert de la consigna</button>
+      <button class="boton" type="button" id="alertViaje">Ver el alert</button>
     </section>
   </main>
+
+  <div class="alerta" id="alerta" role="alertdialog" aria-modal="true" aria-labelledby="alertaTexto" hidden>
+    <div class="alerta__caja">
+      <div class="alerta__icono" id="alertaIcono">🍟</div>
+      <p class="alerta__contador" id="alertaContador"></p>
+      <p class="alerta__texto" id="alertaTexto"></p>
+      <button type="button" class="alerta__boton" id="alertaBoton">¡Dale!</button>
+    </div>
+  </div>
 
   <footer>Francisco García R. · Plataforma 5</footer>
 

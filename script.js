@@ -78,6 +78,73 @@ function crearLluvia() {
   }
 }
 
+const cola = [];
+const alerta = document.getElementById("alerta");
+const alertaTexto = document.getElementById("alertaTexto");
+const alertaIcono = document.getElementById("alertaIcono");
+const alertaContador = document.getElementById("alertaContador");
+const alertaBoton = document.getElementById("alertaBoton");
+let escribiendo = null;
+
+function iconoPara(texto) {
+  if (texto.includes("gastar") && texto.includes("comida")) return "✈️";
+  if (texto.includes("gastar")) return "💸";
+  return "🍟";
+}
+
+function mostrarSiguiente() {
+  if (cola.length === 0) {
+    alerta.classList.add("cerrando");
+    setTimeout(() => {
+      alerta.hidden = true;
+      alerta.classList.remove("cerrando");
+    }, 300);
+    return;
+  }
+  const texto = cola.shift().replace(/\d{4,}/g, (n) => numero.format(Number(n)));
+  alerta.hidden = false;
+  alertaIcono.textContent = iconoPara(texto);
+  alertaContador.textContent = cola.length > 0 ? `1 de ${cola.length + 1}` : "";
+  alertaBoton.textContent = cola.length > 0 ? "Siguiente →" : "¡Dale!";
+  const caja = alerta.querySelector(".alerta__caja");
+  caja.classList.remove("entrar");
+  void caja.offsetWidth;
+  caja.classList.add("entrar");
+  clearInterval(escribiendo);
+  alertaTexto.textContent = "";
+  let i = 0;
+  const rapido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (rapido) {
+    alertaTexto.textContent = texto;
+  } else {
+    escribiendo = setInterval(() => {
+      alertaTexto.textContent = texto.slice(0, ++i);
+      if (i >= texto.length) clearInterval(escribiendo);
+    }, 18);
+  }
+  alertaBoton.focus();
+}
+
+window.alert = function (texto) {
+  cola.push(String(texto));
+  if (alerta.hidden) mostrarSiguiente();
+  else {
+    alertaContador.textContent = `1 de ${cola.length + 1}`;
+    alertaBoton.textContent = "Siguiente →";
+  }
+};
+
+alertaBoton.addEventListener("click", mostrarSiguiente);
+alerta.addEventListener("click", (evento) => {
+  if (evento.target === alerta) mostrarSiguiente();
+});
+document.addEventListener("keydown", (evento) => {
+  if (!alerta.hidden && (evento.key === "Escape" || evento.key === "Enter")) {
+    evento.preventDefault();
+    mostrarSiguiente();
+  }
+});
+
 document.getElementById("formSnacks").addEventListener("input", calcularSnacks);
 document.getElementById("formViaje").addEventListener("input", calcularViaje);
 document.getElementById("alertSnacks").addEventListener("click", ejercicio1);
