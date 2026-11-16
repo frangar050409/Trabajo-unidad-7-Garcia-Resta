@@ -164,6 +164,20 @@ input:focus {
   box-shadow: 4px 4px 0 var(--azul);
 }
 
+input.tope {
+  animation: tope 0.4s ease;
+  border-color: var(--rojo);
+}
+
+@keyframes tope {
+  25%, 75% {
+    translate: -4px 0;
+  }
+  50% {
+    translate: 4px 0;
+  }
+}
+
 .resultado {
   border-top: 3px dashed var(--tinta);
   padding-top: 20px;

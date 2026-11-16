@@ -26,11 +26,11 @@
       </div>
 
       <form class="campos" id="formSnacks">
-        <label>Edad actual<input type="number" id="edadActual" value="20" min="0" max="120"></label>
-        <label>Edad máxima estimada<input type="number" id="edadMaxima" value="85" min="1" max="130"></label>
-        <label>Snack favorito<input type="text" id="snackFavorito" value="papas fritas"></label>
-        <label>Snacks por día<input type="number" id="snacksPorDia" value="2" min="0" step="0.5"></label>
-        <label>Precio por unidad ($)<input type="number" id="precioPorUnidad" value="1500" min="0"></label>
+        <label>Edad actual<input type="number" id="edadActual" value="20" min="0" max="150"></label>
+        <label>Edad máxima estimada<input type="number" id="edadMaxima" value="85" min="1" max="150"></label>
+        <label>Snack favorito<input type="text" id="snackFavorito" value="papas fritas" maxlength="30"></label>
+        <label>Snacks por día<input type="number" id="snacksPorDia" value="2" min="0" max="99999" step="0.5"></label>
+        <label>Precio por unidad ($)<input type="number" id="precioPorUnidad" value="1500" min="0" max="1000000"></label>
       </form>
 
       <div class="resultado">
@@ -41,7 +41,7 @@
         <p class="gasto">Gasto total: <strong id="gastoTotal">$0</strong></p>
       </div>
 
-      <button class="boton" type="button" id="alertSnacks">Ver los alerts</button>
+      <button class="boton" type="button" id="alertSnacks">Resultado final</button>
     </section>
 
     <section class="panel panel--ticket" id="viaje">
@@ -51,9 +51,9 @@
       </div>
 
       <form class="campos" id="formViaje">
-        <label>Días de viaje<input type="number" id="diasDeViaje" value="10" min="1"></label>
-        <label>Presupuesto máximo ($)<input type="number" id="presupuestoMaximo" value="600000" min="0"></label>
-        <label>Comidas totales<input type="number" id="comidasTotales" value="30" min="1"></label>
+        <label>Días de viaje<input type="number" id="diasDeViaje" value="10" min="1" max="365"></label>
+        <label>Presupuesto máximo ($)<input type="number" id="presupuestoMaximo" value="600000" min="0" max="100000000"></label>
+        <label>Comidas totales<input type="number" id="comidasTotales" value="30" min="1" max="1825"></label>
       </form>
 
       <div class="ticket" id="ticket">
@@ -66,7 +66,7 @@
         <div class="ticket__codigo" aria-hidden="true"></div>
       </div>
 
-      <button class="boton" type="button" id="alertViaje">Ver el alert</button>
+      <button class="boton" type="button" id="alertViaje">Resultado final</button>
     </section>
   </main>
 

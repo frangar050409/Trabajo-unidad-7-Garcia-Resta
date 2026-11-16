@@ -2,7 +2,19 @@ const pesos = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS
 const numero = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 0 });
 
 function valor(id) {
-  return Number(document.getElementById(id).value) || 0;
+  const campo = document.getElementById(id);
+  if (campo.value === "") return 0;
+  let numeroIngresado = Number(campo.value) || 0;
+  const minimo = campo.min === "" ? -Infinity : Number(campo.min);
+  const maximo = campo.max === "" ? Infinity : Number(campo.max);
+  const ajustado = Math.min(Math.max(numeroIngresado, minimo), maximo);
+  if (ajustado !== numeroIngresado) {
+    campo.value = ajustado;
+    campo.classList.remove("tope");
+    void campo.offsetWidth;
+    campo.classList.add("tope");
+  }
+  return ajustado;
 }
 
 function contar(elemento, destino, formato) {
